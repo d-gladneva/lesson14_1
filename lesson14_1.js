@@ -14,21 +14,29 @@ DomElement.prototype.createELem = function () {
 
         const div = document.createElement('div');
         document.body.append(div);
-        div.style.selector = this.selector;
-        div.style.height = this.height;
-        div.style.width = this.width;
-        div.style.background = this.bg;
-        div.style.fontSize = this.fontSize;
+        div.style.cssText = `
+        selector: ${this.selector};
+        height: ${this.height};
+        width: ${this.width};
+        background: ${this.bg};
+        font-size: ${this.fontSize};
+        position: ${this.position};
+        `;
         div.textContent = this.text;
-        div.style.position = this.position;
         div.classList.add('block');
     } else if (this.selector.charAt(0) === '#') {
         const p = document.createElement('p');
         document.body.append(p);
-        p.style.fontSize = this.fontSize;
+        p.style.cssText = `
+        selector: ${this.selector};
+        height: ${this.height};
+        width: ${this.width};
+        background: ${this.bg};
+        font-size: ${this.fontSize};
+        `;
         p.textContent = this.text;
         p.id = 'best';
-    } else  {
+    } else {
         console.log('Ошибка! Неверно переданы параметры.')
     }
 };
