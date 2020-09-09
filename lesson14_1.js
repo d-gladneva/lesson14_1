@@ -14,7 +14,7 @@ DomElement.prototype.createELem = function () {
 
         const div = document.createElement('div');
         document.body.append(div);
-        div.classList.add(this.selector.substr(1));
+        div.classList.add(this.selector.substring(1, this.selector.length));
         div.style.cssText = `
         height: ${this.height};
         width: ${this.width};
@@ -26,8 +26,7 @@ DomElement.prototype.createELem = function () {
     } else if (this.selector.charAt(0) === '#') {
         const p = document.createElement('p');
         document.body.append(p);
-        p.id = this.selector.substr(1);
-        p.selector=this.selector;
+        p.id = this.selector.substring(1, this.selector.length);
         p.style.cssText = `
         height: ${this.height};
         width: ${this.width};
