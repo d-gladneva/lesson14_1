@@ -14,8 +14,8 @@ DomElement.prototype.createELem = function () {
 
         const div = document.createElement('div');
         document.body.append(div);
+        div.classList.add(this.selector.substr(1));
         div.style.cssText = `
-        selector: ${this.selector};
         height: ${this.height};
         width: ${this.width};
         background: ${this.bg};
@@ -23,13 +23,12 @@ DomElement.prototype.createELem = function () {
         position: ${this.position};
         `;
         div.textContent = this.text;
-        div.classList.add(this.selector);
     } else if (this.selector.charAt(0) === '#') {
         const p = document.createElement('p');
         document.body.append(p);
-        p.id = this.selector;
+        p.id = this.selector.substr(1);
+        p.selector=this.selector;
         p.style.cssText = `
-        selector: ${this.selector};
         height: ${this.height};
         width: ${this.width};
         background: ${this.bg};
@@ -42,7 +41,7 @@ DomElement.prototype.createELem = function () {
     }
 };
 
-let sqr = new DomElement('#', '50px', '50px', 'red', '18px', 'paragraph', 'absolute');
+let sqr = new DomElement('#best', '50px', '50px', 'red', '18px', 'paragraph', 'absolute');
 
 sqr.createELem();
 
