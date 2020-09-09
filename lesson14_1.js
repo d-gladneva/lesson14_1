@@ -49,7 +49,7 @@ let sqr1 = new DomElement('.block', '100px', '100px', 'blue', '18px', 'sqr1', 'a
 
 document.addEventListener('DOMContentLoaded', (e) => {
     sqr1.createELem();
-    const second = document.getElementsByClassName('.block')[0];
+    const second = document.querySelector('.block');
     let coordY = 0;
     let coordX = 0;
     document.addEventListener('keydown', function (e) {
