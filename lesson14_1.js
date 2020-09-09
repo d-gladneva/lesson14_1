@@ -23,10 +23,11 @@ DomElement.prototype.createELem = function () {
         position: ${this.position};
         `;
         div.textContent = this.text;
-        div.classList.add('block');
+        div.classList.add(this.selector);
     } else if (this.selector.charAt(0) === '#') {
         const p = document.createElement('p');
         document.body.append(p);
+        p.id = this.selector;
         p.style.cssText = `
         selector: ${this.selector};
         height: ${this.height};
@@ -35,36 +36,44 @@ DomElement.prototype.createELem = function () {
         font-size: ${this.fontSize};
         `;
         p.textContent = this.text;
-        p.id = 'best';
+
     } else {
         console.log('Ошибка! Неверно переданы параметры.')
     }
 };
 
-let sqr = new DomElement('#block', '50px', '50px', 'red', '18px', 'blabla', 'absolute');
+let sqr = new DomElement('#', '50px', '50px', 'red', '18px', 'paragraph', 'absolute');
 
 sqr.createELem();
 
-const second = document.getElementsByClassName('block')[0];
-let coordY = 0;
-let coordX = 0;
-document.addEventListener('keydown', function (e) {
-    if (e.code === 'ArrowLeft') {
-        coordX -= 10;
-        second.style.marginLeft = coordX + 'px';
-        console.log('left');
-    } else if (e.code === 'ArrowDown') {
-        coordY += 10;
-        second.style.marginTop = coordY + 'px';
-        console.log('down');
-    } else if (e.code === 'ArrowUp') {
-        coordY -= 10;
-        second.style.marginTop = coordY + 'px';
-        console.log('up');
-    } else if (e.code === 'ArrowRight') {
-        coordX += 10;
-        second.style.marginLeft = coordX + 'px';
-        console.log('right');
-    }
+let sqr1 = new DomElement('.block', '100px', '100px', 'blue', '18px', 'sqr1', 'absolute');
 
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    sqr1.createELem();
+    const second = document.getElementsByClassName('.block')[0];
+    let coordY = 0;
+    let coordX = 0;
+    document.addEventListener('keydown', function (e) {
+        if (e.code === 'ArrowLeft') {
+            coordX -= 10;
+            second.style.marginLeft = coordX + 'px';
+            console.log('left');
+        } else if (e.code === 'ArrowDown') {
+            coordY += 10;
+            second.style.marginTop = coordY + 'px';
+            console.log('down');
+        } else if (e.code === 'ArrowUp') {
+            coordY -= 10;
+            second.style.marginTop = coordY + 'px';
+            console.log('up');
+        } else if (e.code === 'ArrowRight') {
+            coordX += 10;
+            second.style.marginLeft = coordX + 'px';
+            console.log('right');
+        }
+
+    });
 });
+
+
